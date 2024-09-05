@@ -1,0 +1,237 @@
+def login():    
+    win=Toplevel()
+
+    w=win.winfo_screenwidth()
+
+    h=win.winfo_screenheight()
+
+    #win.geometry(f'{w}x{h}')
+
+    win.attributes('-fullscreen',True)
+
+    
+
+    def check():
+
+        f=open(r"C:\Users\Best\Desktop\class 12  project\Project\Text file\pass.txt")
+
+        d=f.readlines()
+
+        d=''.join(d)
+
+        d=d.split(' ')
+
+        if d[0] == ent.get():
+
+            win.destroy()
+
+            runpy.run_path(r"C:\Users\Best\Desktop\class 12  project\Project\Menu\a_option.py")
+
+        elif d[1] == ent.get():
+
+            win.destroy()
+
+            runpy.run_path(r"C:\Users\Best\Desktop\class 12  project\Project\Menu\l_option.py")
+
+        
+
+        ent.after(1,check)
+
+    
+
+    def closewin():
+
+    	win.quit()
+
+    	win.destroy()
+
+    
+
+    def show():
+
+        global i
+
+        if i =='closed':
+
+            ent.config(show='')
+
+            eye.config(image=e_open)
+
+            i ='open'
+
+        else:
+
+            ent.config(show=u'\u2022')
+
+            eye.config(image=e_closed)
+
+            i ='closed'
+
+            
+
+    i='closed'
+
+    #image
+
+    img0=Image.open(r'C:\Users\Best\Desktop\class 12  project\Project\Image\Untitled-1.jpg')
+
+    img0=img0.resize((win.winfo_screenwidth(),win.winfo_screenheight()),Image.ANTIALIAS)
+
+    logo=ImageTk.PhotoImage(img0)
+
+    
+
+    img=Image.open(r'C:\Users\Best\Desktop\class 12  project\Project\Image\eye_open.png')
+
+    img=img.resize((35,22),Image.ANTIALIAS)
+
+    e_open=ImageTk.PhotoImage(img)
+
+    
+
+    
+
+    img1=Image.open(r'C:\Users\Best\Desktop\class 12  project\Project\Image\eye_closed.png')
+
+    img1=img1.resize((35,26),Image.ANTIALIAS)
+
+    e_closed=ImageTk.PhotoImage(img1)
+
+    
+
+    img2=Image.open(r'C:\Users\Best\Desktop\class 12  project\Project\Image\l_bg.jpg')
+
+    img2=img2.resize((win.winfo_screenwidth(),win.winfo_screenheight()),Image.ANTIALIAS)
+
+    bg=ImageTk.PhotoImage(img2)
+
+    
+
+    img3=Image.open(r'C:\Users\Best\Desktop\class 12  project\Project\Image\logo.png')
+
+    img3=img3.resize((300,200),Image.ANTIALIAS)
+
+    main_logo=ImageTk.PhotoImage(img3)
+
+    
+
+    img4=Image.open(r"C:\Users\Best\Desktop\class 12  project\Project\Image\close1.png")
+
+    img4=img4.resize((40,40),Image.ANTIALIAS)
+
+    closeimg=ImageTk.PhotoImage(img4)
+
+    #label
+
+    L=Label(win,image=logo)
+
+    L.pack(side='left')
+
+    
+
+    f=Frame(win,bg='gray76')
+
+    f.place(x=1083,y=424)
+
+    
+
+    head=Label(win,text='ADMIN',font=('Gill Sans',30,'bold'),bg='white')
+
+    #head.place(x=1150,y=380)
+
+    
+
+    ml=Label(win,image=main_logo,bg='white')
+
+    #ml.place(x=160,y=250)
+
+    #entry
+
+    ent=Entry(f,width=18,show=u'\u2022',relief='flat',font=('',20,'bold'),bg='white')
+
+    ent.config(highlightbackground='white')
+
+    ent.pack(ipady=8)
+
+    ent.focus_force()
+
+    #button
+
+    eye=Button(win,image=e_closed,padx=5,pady=5,relief='flat',command=show,bg='white')
+
+    eye.place(x=1370,y=436)
+
+    
+
+    close=Button(win,image=closeimg,relief='flat',command=closewin,bg='#7EFFC5')
+
+    close.place(x=1490,y=0)
+
+    
+
+    check()
+
+    
+
+    win.mainloop()
+
+def menu():
+    from tkinter import *
+
+    import runpy
+
+    
+
+    win=Toplevel()
+
+    win.focus_force()
+
+    win.geometry(f"{win.winfo_screenwidth()}x{win.winfo_screenwidth()}")
+
+    
+
+    #function
+
+    def backmenu():
+
+    	win.destroy()
+
+    	runpy.run_path(r'C:\Users\Best\Desktop\class 12  project\Project\Login\login.py')
+
+    def t():
+
+    	win.destroy()
+
+    	runpy.run_path(r'C:\Users\Best\Desktop\class 12  project\Project\Teachers\Teachers.py')
+
+    def s():
+
+    	win.destroy()
+
+    	runpy.run_path(r'C:\Users\Best\Desktop\class 12  project\Project\Students\students.py')
+
+    
+
+    #label
+
+    l=Button(win,text='Teachers',command=t,font=("",50,"bold"),relief='groove')
+
+    l.place(x=400,y=300)
+
+    
+
+    l1=Button(win,text='Students',command=s,font=("",50,"bold"),relief='groove')
+
+    l1.place(x=760,y=300)
+
+    
+
+    back=Button(win,text='<<---Back',command=backmenu)
+
+    back.place(x=0,y=0)
+
+    
+
+    win.mainloop()
+
+def stud():
